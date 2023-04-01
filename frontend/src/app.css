@@ -17,7 +17,7 @@ body {
   /*display: flex;*/
   /*place-items: center;*/
   /*min-width: 320px;*/
-  min-height: 100vh;
+  height: 100vh;
 }
 
 h1 {
@@ -27,17 +27,21 @@ h1 {
 
 #app {
   margin: 0 auto;
-  text-align: center;
 }
 
-.container {
+.container-section {
+  padding: 4px 2px;
+  border: 1px solid yellow;
+}
+
+.container-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 4px;
   padding: 0px 12px;
 }
 
-.section {
+.item {
   padding: 4px 2px;
   border: 1px solid yellow;
 }
