@@ -1,8 +1,14 @@
 <script lang="ts">
+import {apiService} from "./services/api.service.js";
 </script>
 
-<main>
+<svelte:head>
+{#await apiService.get() then data}
+    <title>{data.title}</title>
+{/await}
+</svelte:head>
 
+<main>
   <h1>Dashboard</h1>
 
   <div class="container">
