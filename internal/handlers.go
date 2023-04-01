@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
@@ -17,7 +18,10 @@ func RegisterHandlers(e *echo.Echo, h Handlers, baseUrl string, middlewares ...e
 }
 
 func (h *Handlers) GetConfig(c echo.Context) error {
-	return c.JSON(http.StatusOK, Data{
-		Title: "Test",
-	})
+	conf, err := ReadConfig("conf.yml")
+	if err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	fmt.Printf("conf: %v\n", conf)
+	return c.JSON(http.StatusOK, conf)
 }
