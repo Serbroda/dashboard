@@ -1,0 +1,35 @@
+{
+  "title": "My Conf Title",
+  "sections": [
+    {
+      "name": "Search Engines",
+      "items": [
+        {
+          "name": "Google",
+          "url": "https://google.de"
+        },
+        {
+          "name": "Bing",
+          "url": "https://bing.de"
+        }
+      ]
+    },
+    {
+      "name": "News",
+      "items": [
+        {
+          "name": "t3n",
+          "url": "https://t3n.de"
+        },
+        {
+          "name": "Heise",
+          "url": "https://heise.de"
+        },
+        {
+          "name": "Golem",
+          "url": "https://golem.de"
+        }
+      ]
+    }
+  ]
+}

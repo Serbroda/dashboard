@@ -19,10 +19,6 @@ var (
 	distIndexHtml = echo.MustSubFS(IndexHTML, "frontend/dist")
 )
 
-type Data struct {
-	Title string `json:"title"`
-}
-
 func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())

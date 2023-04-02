@@ -9,16 +9,12 @@ import (
 type Handlers struct {
 }
 
-type Data struct {
-	Title string `json:"title"`
-}
-
 func RegisterHandlers(e *echo.Echo, h Handlers, baseUrl string, middlewares ...echo.MiddlewareFunc) {
 	e.GET(baseUrl+"/config", h.GetConfig, middlewares...)
 }
 
 func (h *Handlers) GetConfig(c echo.Context) error {
-	conf, err := ReadConfig("conf.yml")
+	conf, err := ReadConfig("conf.json")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}

@@ -1,28 +1,34 @@
 package internal
 
 import (
-	"gopkg.in/yaml.v3"
+	"encoding/json"
 	"log"
 	"os"
 )
 
+type Config struct {
+	Title    string    `json:"title"`
+	Sections []Section `json:"sections"`
+}
+
+type Section struct {
+	Name  string `json:"name"`
+	Items []Item `json:"items"`
+}
+
+type Item struct {
+	Name string `json:"name"`
+	Url  string `json:"url"`
+}
+
 func ReadConfig(path string) (any, error) {
-	var config any
+	var config Config
 
-	// Open YAML file
-	file, err := os.Open(path)
+	content, err := os.ReadFile(path)
 	if err != nil {
-		log.Println(err.Error())
-	}
-	defer file.Close()
-
-	// Decode YAML file to struct
-	if file != nil {
-		decoder := yaml.NewDecoder(file)
-		if err := decoder.Decode(&config); err != nil {
-			log.Println(err.Error())
-		}
+		log.Fatal(err)
 	}
 
+	err = json.Unmarshal(content, &config)
 	return config, nil
 }
