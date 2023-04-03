@@ -27,6 +27,8 @@ func main() {
 	e.StaticFS("/", distDirFS)
 	e.FileFS("/", "index.html", distIndexHtml)
 
+	e.Static("/static", "static")
+
 	internal.RegisterHandlers(e, internal.Handlers{}, "/api/v1")
 
 	e.Logger.Fatal(e.Start(":8080"))
