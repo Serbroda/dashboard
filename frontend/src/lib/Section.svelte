@@ -1,14 +1,15 @@
 <script lang="ts">
-  export let title: string = "";
-  export let items: any[] = [];
+  import type {Section} from "../models/config.model";
+
+  export let section: Section;
 </script>
 
 <div class="section--container">
   <div class="section--header">
-    {title}
+    {section.name}
   </div>
   <div class="section--items-container">
-    {#each items as item}
+    {#each section.items as item}
       <a class="section--item" href={item.url}>{item.name}</a>
     {/each}
   </div>

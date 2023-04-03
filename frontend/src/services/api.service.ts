@@ -1,8 +1,10 @@
+import type {Config} from "../models/config.model";
+
 class ApiService {
     constructor(private baseUrl: string) {
     }
 
-    async get(): Promise<any> {
+    async get(): Promise<Config> {
         const body = await fetch(`${this.baseUrl}/api/v1/config`);
         return body.json();
     }
