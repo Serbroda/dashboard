@@ -6,13 +6,17 @@ class ApiService {
     constructor(private baseUrl: string) {
     }
 
-    async get(): Promise<Config> {
+    async getConfig(): Promise<Config> {
         const body = await fetch(`${this.baseUrl}/api/v1/config`);
         return body.json();
     }
 
     async getCustomCss(): Promise<Response> {
-        return fetch(`${this.baseUrl}/static/custom.css`)
+        return this.fetchStaticFile('custom.css');
+    }
+
+    async fetchStaticFile(file: string): Promise<Response> {
+        return fetch(`${this.baseUrl}/static/${file}`)
     }
 }
 

@@ -1,6 +1,7 @@
 <script lang="ts">
-    import {apiService, baseUrl} from "./services/api.service.js";
+    import {apiService} from "./services/api.service.js";
     import Section from "./lib/Section.svelte";
+    import {AppBar} from "@skeletonlabs/skeleton";
 
     /*apiService.getCustomCss().then(res => {
         console.log(res)
@@ -20,18 +21,29 @@
         {/if}
     {/await}
 
-    {#await apiService.get() then data}
+    {#await apiService.getConfig() then data}
         <title>{data.title}</title>
     {/await}
 </svelte:head>
 
-<main class="h-full">
+<main class="h-full p-4">
+    <AppBar>
+        <svelte:fragment slot="lead">(icon)</svelte:fragment>
+        <svelte:fragment slot="trail">(actions)</svelte:fragment>
+        <svelte:fragment slot="headline">(headline)</svelte:fragment>
+    </AppBar>
+
+    <label class="label">
+        <span>Input</span>
+        <input class="input" type="text" placeholder="Input" />
+    </label>
+
     <h1>Dashboard</h1>
 
-    <button class="btn primary">Hi there</button>
+    <button type="button" class="btn-icon variant-filled-primary">(icon)</button>
 
     <div class="container">
-        {#await apiService.get() then data}
+        {#await apiService.getConfig() then data}
 
             {#each data.sections || [] as section}
                 <Section section={section}/>
