@@ -26,21 +26,8 @@
     {/await}
 </svelte:head>
 
-<main class="h-full p-4">
-    <AppBar>
-        <svelte:fragment slot="lead">(icon)</svelte:fragment>
-        <svelte:fragment slot="trail">(actions)</svelte:fragment>
-        <svelte:fragment slot="headline">(headline)</svelte:fragment>
-    </AppBar>
-
-    <label class="label">
-        <span>Input</span>
-        <input class="input" type="text" placeholder="Input" />
-    </label>
-
+<main class="h-full">
     <h1>Dashboard</h1>
-
-    <button type="button" class="btn-icon variant-filled-primary">(icon)</button>
 
     <div class="container">
         {#await apiService.getConfig() then data}
