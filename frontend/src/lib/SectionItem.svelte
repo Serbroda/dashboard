@@ -1,35 +1,47 @@
 <script lang="ts">
-    export let url: string;
-    export let name: string;
-    let status: "online" | "offline" = "offline";
-    let checked = false;
+    import { onDestroy } from 'svelte';
+    import type {Item} from "../models/config.model";
 
-    function chk(target, times, delay) {
-        return new Promise((res, rej) => {                       // return a promise
+    export let item: Item = {name: "", url: ""};
+    let online: boolean = false;
+    let interval: number | undefined;
 
-            (function rec(i) {                                   // recursive IIFE
-                fetch(target, {mode: 'no-cors'}).then((r) => {   // fetch the resourse
-                    res(r);                                      // resolve promise if success
-                }).catch( err => {
-                    if (times === 0)                             // if number of tries reached
-                        return rej(err);                         // don't try again
+    const check = (url: string): Promise<boolean> => {
+        return new Promise((res, rej) => {
+            console.debug('Checking availability for ', url);
 
-                    setTimeout(() => rec(--times), delay )       // otherwise, wait and try
-                });                                              // again until no more tries
-            })(times);
+            fetch(url, {mode: 'no-cors'}).then((r) => {
+                console.debug('result for url ' + url, r);
+                return res(true);
+            }).catch(err => {
+                console.debug('result for url ' + url, err);
+                return res(false);
 
+            });
         });
     }
 
-    chk(url, 3, 1000).then( image => {
-        status = "online"
-    }).catch( err => {
-        status = "offline"
-    });
+    if (item.checkAvailability === true) {
+        check(item.url).then(res => online = res);
+
+        if (item.checkAvailabilityIntervalSeconds) {
+            console.debug('Interval', {
+                url: item.url,
+                seconds: item.checkAvailabilityIntervalSeconds
+            });
+            interval = setInterval(() => {
+                check(item.url).then(res => online = res);
+            }, 1000 * item.checkAvailabilityIntervalSeconds)
+        }
+    }
+
+    onDestroy(() => clearInterval(interval));
 </script>
 
 <a target="_blank" style="text-decoration: none" class="flex bg-surface-700 p-2 rounded-md"
-   href={url}>{name}
-    <div class="flex-1"></div>
-    <div class={`w-2 self-start aspect-square rounded-full animate-pulse ${status === "online" ? "bg-green-500" : "bg-red-500"}`}></div>
+   href={item.url}>{item.name}
+    {#if (item.checkAvailability === true)}
+        <div class="flex-1"></div>
+        <div class={`w-2 self-start aspect-square rounded-full animate-pulse ${online ? "bg-green-500" : "bg-red-500"}`}></div>
+    {/if}
 </a>

@@ -10,5 +10,7 @@ export type Section = {
 
 export type Item = {
     name: string;
-    url: string
+    url: string;
+    checkAvailability?: boolean;
+    checkAvailabilityIntervalSeconds?: number;
 }

@@ -6,11 +6,15 @@
       "items": [
         {
           "name": "Google",
-          "url": "https://google.de"
+          "url": "https://google.de",
+          "checkAvailability": true,
+          "checkAvailabilityIntervalSeconds": 20
         },
         {
           "name": "Bing",
-          "url": "https://bing.de"
+          "url": "https://bing.de",
+          "checkAvailability": false,
+          "checkAvailabilityIntervalSeconds": 20
         }
       ]
     },
@@ -19,7 +23,9 @@
       "items": [
         {
           "name": "t3n",
-          "url": "https://t3n.de"
+          "url": "https://t3n.de",
+          "checkAvailability": true,
+          "checkAvailabilityIntervalSeconds": 5
         },
         {
           "name": "Heise",
@@ -27,7 +33,9 @@
         },
         {
           "name": "Golem",
-          "url": "https://golem.de"
+          "url": "https://golem.de",
+          "checkAvailability": true,
+          "checkAvailabilityIntervalSeconds": 60
         }
       ]
     }

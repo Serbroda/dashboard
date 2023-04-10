@@ -27,7 +27,7 @@
 </svelte:head>
 
 <main class="h-full">
-    <h1>Dashboard</h1>
+    <h1>hedywyd?y!</h1>
 
     <div class="container">
         {#await apiService.getConfig() then data}

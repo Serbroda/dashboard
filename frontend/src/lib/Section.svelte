@@ -11,9 +11,8 @@
     </div>
     <div class="grid grid-cols-4 gap-4">
         {#each section.items as item}
-            <SectionItem url={item.url} name={item.name}/>
+            <SectionItem item={item}/>
         {/each}
-        <SectionItem url="http://michgibtsnicht.de" name="Not available"/>
     </div>
 </div>
 

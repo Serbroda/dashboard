@@ -17,8 +17,10 @@ type Section struct {
 }
 
 type Item struct {
-	Name string `json:"name"`
-	Url  string `json:"url"`
+	Name                             string `json:"name"`
+	Url                              string `json:"url"`
+	CheckAvailability                bool   `json:"checkAvailability"`
+	CheckAvailabilityIntervalSeconds int32  `json:"checkAvailabilityIntervalSeconds"`
 }
 
 func ReadConfig(path string) (any, error) {
