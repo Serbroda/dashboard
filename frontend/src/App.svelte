@@ -1,7 +1,6 @@
 <script lang="ts">
     import {apiService} from "./services/api.service.js";
     import Section from "./lib/Section.svelte";
-    import {AppBar} from "@skeletonlabs/skeleton";
 
     /*apiService.getCustomCss().then(res => {
         console.log(res)
@@ -26,7 +25,7 @@
     {/await}
 </svelte:head>
 
-<main class="h-full">
+<main class="main">
     <h1>hedywyd?y!</h1>
 
     <div class="container">
