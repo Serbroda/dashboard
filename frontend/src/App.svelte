@@ -1,6 +1,9 @@
 <script lang="ts">
     import {apiService} from "./services/api.service.js";
     import Section from "./lib/Section.svelte";
+    import configStore from './stores/config.store';
+
+    const [data, loading, error] = configStore();
 
     /*apiService.getCustomCss().then(res => {
         console.log(res)
@@ -12,6 +15,8 @@
         }
     });*/
 </script>
+
+
 
 <svelte:head>
     {#await apiService.getCustomCss() then res}
@@ -28,14 +33,17 @@
 <main class="main">
     <h1>hedywyd?y!</h1>
 
-    <div class="container">
-        {#await apiService.getConfig() then data}
-
-            {#each data.sections || [] as section}
+    {#if $loading}
+        Loading...
+    {:else if $error}
+        Error: {$error}
+    {:else}
+        <div class="container">
+            {#each $data.sections || [] as section}
                 <Section section={section}/>
             {/each}
-        {/await}
-    </div>
+        </div>
+    {/if}
 </main>
 
 <style>
