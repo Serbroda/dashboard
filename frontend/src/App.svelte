@@ -1,31 +1,31 @@
 <script lang="ts">
-    import {apiService} from "./services/api.service.js";
     import Section from "./lib/Section.svelte";
     import configStore from './stores/config.store';
+    import {fetchAsset} from "./services/assets.service";
 
     const [config, loading, error] = configStore();
 </script>
 
 <svelte:head>
-    {#await apiService.getCustomCss() then res}
+    {#await fetchAsset('custom.css') then res}
         {#if (res.ok)}
             <link href="{res.url}" rel="stylesheet"/>
         {/if}
     {/await}
 
-    {#await apiService.getConfig() then data}
-        <title>{data.title}</title>
-    {/await}
+    {#if $config}
+        <title>{$config.title}</title>
+    {/if}
 </svelte:head>
 
 <main class="main">
-    <h1>hedywyd?y!</h1>
-
     {#if $loading}
         Loading...
     {:else if $error}
         Error: {$error}
     {:else}
+        <h1>{$config.title || 'hedywyd?y!'}</h1>
+
         <div class="container">
             {#each $config.sections || [] as section}
                 <Section section={section}/>

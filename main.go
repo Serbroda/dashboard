@@ -23,6 +23,7 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.CORS())
+	e.Use(internal.NoCache)
 
 	e.StaticFS("/", distDirFS)
 	e.FileFS("/", "index.html", distIndexHtml)

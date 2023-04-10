@@ -1,19 +1,19 @@
 import type {Writable} from "svelte/store";
 import {writable} from "svelte/store";
 
-export type FetchStore = [Writable<Response>, Writable<boolean>, Writable<boolean>, () => Promise<void>];
+export type FetchStore<T> = [Writable<T>, Writable<boolean>, Writable<boolean>, () => Promise<void>];
 
-const fetchStore = (url: string, init?: RequestInit): FetchStore => {
+const fetchStore = <T>(url: string, init?: RequestInit): FetchStore<T> => {
     const loading = writable<boolean>(false)
     const error = writable<boolean>(false)
-    const response = writable<Response>();
+    const data = writable<T>();
 
     async function get() {
         loading.set(true)
         error.set(false)
         try {
             const res = await fetch(url, init);
-            response.set(res);
+            data.set(await res.json());
         } catch (e) {
             error.set(e)
         } finally {
@@ -23,7 +23,7 @@ const fetchStore = (url: string, init?: RequestInit): FetchStore => {
 
     get()
 
-    return [response, loading, error, get]
+    return [data, loading, error, get]
 }
 
 export default fetchStore;
