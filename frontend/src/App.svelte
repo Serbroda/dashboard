@@ -3,20 +3,8 @@
     import Section from "./lib/Section.svelte";
     import configStore from './stores/config.store';
 
-    const [data, loading, error] = configStore();
-
-    /*apiService.getCustomCss().then(res => {
-        console.log(res)
-        if (res.ok) {
-            const heads = document.getElementsByTagName("head");
-            if(heads?.length > 0) {
-                heads[0].append(`<link href="${res.url}" rel="stylesheet">`)
-            }
-        }
-    });*/
+    const [config, loading, error] = configStore();
 </script>
-
-
 
 <svelte:head>
     {#await apiService.getCustomCss() then res}
@@ -39,7 +27,7 @@
         Error: {$error}
     {:else}
         <div class="container">
-            {#each $data.sections || [] as section}
+            {#each $config.sections || [] as section}
                 <Section section={section}/>
             {/each}
         </div>
