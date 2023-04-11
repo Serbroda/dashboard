@@ -13,7 +13,7 @@ func RegisterHandlers(e *echo.Echo, h Handlers, baseUrl string, middlewares ...e
 }
 
 func (h *Handlers) GetConfig(c echo.Context) error {
-	conf, err := ReadConfig("conf.json")
+	conf, err := ReadConfig[map[string]interface{}]("conf.json")
 	if err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
