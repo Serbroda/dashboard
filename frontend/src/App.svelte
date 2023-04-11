@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-    {#await fetchAsset('custom.css') then res}
+    {#await fetchAsset('themes/default.css') then res}
         {#if (res.ok)}
             <link href="{res.url}" rel="stylesheet"/>
         {/if}
@@ -18,15 +18,15 @@
     {/if}
 </svelte:head>
 
-<main class="main">
+<main class="app-main">
     {#if $loading}
         Loading...
     {:else if $error}
         Error: {$error}
     {:else}
-        <h1>{$config.title || 'hedywyd?y!'}</h1>
+        <h1 class="app-title">{$config.title || 'HEDYWYD?Y!'}</h1>
 
-        <div class="container">
+        <div class="app-sections-container-wrapper">
             {#each $config.sections || [] as section}
                 <Section section={section}/>
             {/each}

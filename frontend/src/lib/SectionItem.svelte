@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onDestroy } from 'svelte';
+    import {onDestroy} from 'svelte';
     import type {Item} from "../models/config.model";
 
     export let item: Item = {name: "", url: ""};
@@ -38,10 +38,20 @@
     onDestroy(() => clearInterval(interval));
 </script>
 
-<a target="_blank" style="text-decoration: none" class="flex bg-surface-700 p-2 rounded-md"
-   href={item.url}>{item.name}
-    {#if (item.checkAvailability === true)}
-        <div class="flex-1"></div>
-        <div class={`w-2 self-start aspect-square rounded-full animate-pulse ${online ? "bg-green-500" : "bg-red-500"}`}></div>
+<a target="_blank" class="app-item" href={item.url}>
+    {#if item.icon}
+        <div class="self-center">
+            <img class="h-8 w-8" src={item.icon}/>
+        </div>
     {/if}
+    <div class="flex-1 flex flex-col pl-2">
+        <span>{item.name}</span>
+        <small>Hi</small>
+    </div>
+    <div>
+        {#if (item.checkAvailability === true)}
+            <div class="flex-1"></div>
+            <div class={`app-item-availability ${online ? "app-item-availability-online" : "app-item-availability-offline"}`}></div>
+        {/if}
+    </div>
 </a>

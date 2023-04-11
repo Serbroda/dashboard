@@ -11,6 +11,7 @@ export type Section = {
 export type Item = {
     name: string;
     url: string;
+    icon?: string;
     checkAvailability?: boolean;
     checkAvailabilityIntervalSeconds?: number;
 }

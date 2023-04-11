@@ -19,6 +19,7 @@ type Section struct {
 type Item struct {
 	Name                             string `json:"name"`
 	Url                              string `json:"url"`
+	Icon                             string `json:"icon"`
 	CheckAvailability                bool   `json:"checkAvailability"`
 	CheckAvailabilityIntervalSeconds int32  `json:"checkAvailabilityIntervalSeconds"`
 }

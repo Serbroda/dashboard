@@ -5,11 +5,11 @@
     export let section: Section;
 </script>
 
-<div class="p-4">
-    <div class="section--header">
+<div class="app-section-list-ctonainer">
+    <div class="app-sections-header">
         {section.name}
     </div>
-    <div class="grid grid-cols-4 gap-4">
+    <div class="app-section-items">
         {#each section.items as item}
             <SectionItem item={item}/>
         {/each}

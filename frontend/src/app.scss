@@ -2,7 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-#app {
-  @apply h-screen bg-gray-50 text-gray-900;
-  @apply dark:bg-gray-700 dark:text-gray-50;
+$base-font-size: 12px;
+$heading-scale: 8;
+
+html, body, #app {
+  @apply h-screen;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: $base-font-size + $heading-scale * (6 - $i);
+  }
+}
+
+.app-main {
+  @apply p-4;
+  @apply bg-gray-50;
+  @apply h-screen;
+}
+
+.app-section-items {
+  @apply grid grid-cols-3 gap-4;
+}
+
+.app-item {
+  @apply flex p-2 rounded-md bg-gray-200 border border-transparent hover:border-gray-300;
+  text-decoration: none;
+}
+
+.app-item-availability {
+  @apply w-2 self-start aspect-square rounded-full animate-pulse;
+}
+
+.app-item-availability-online {
+  @apply bg-green-500;
+}
+
+.app-item-availability-offline {
+  @apply bg-red-500;
 }

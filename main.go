@@ -28,7 +28,7 @@ func main() {
 	e.StaticFS("/", distDirFS)
 	e.FileFS("/", "index.html", distIndexHtml)
 
-	e.Static("/static", "static")
+	e.Static("/api/v1/assets", "assets")
 
 	internal.RegisterHandlers(e, internal.Handlers{}, "/api/v1")
 
