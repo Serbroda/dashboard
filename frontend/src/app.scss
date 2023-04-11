@@ -9,16 +9,8 @@ html, body, #app {
   @apply h-screen;
 }
 
-@for $i from 1 through 6 {
-  h#{$i} {
-    font-size: $base-font-size + $heading-scale * (6 - $i);
-  }
-}
-
 .app-main {
   @apply p-4;
-  @apply bg-gray-50;
-  @apply h-screen;
 }
 
 .app-section-items {

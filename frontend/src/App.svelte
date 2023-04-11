@@ -1,9 +1,20 @@
 <script lang="ts">
-    import Section from "./lib/Section.svelte";
-    import configStore from './stores/config.store';
     import {fetchAsset} from "./services/assets.service";
+    import Router from 'svelte-spa-router'
+    import Home from "./routes/Home.svelte";
+    import NotFound from "./routes/NotFound.svelte";
+    import Settings from "./routes/Settings.svelte";
+    import configStore from "./stores/config.store";
+    import NavBar from "./lib/NavBar.svelte";
+    import Section from "./lib/Section.svelte";
 
     const [config, loading, error] = configStore();
+
+    const routes = {
+        '/': Home,
+        '/settings': Settings,
+        '*': NotFound,
+    }
 </script>
 
 <svelte:head>
@@ -18,21 +29,13 @@
     {/if}
 </svelte:head>
 
-<main class="app-main">
-    {#if $loading}
-        Loading...
-    {:else if $error}
-        Error: {$error}
-    {:else}
-        <h1 class="app-title">{$config.title || 'HEDYWYD?Y!'}</h1>
-
-        <div class="app-sections-container-wrapper">
-            {#each $config.sections || [] as section}
-                <Section section={section}/>
-            {/each}
-        </div>
-    {/if}
-</main>
-
-<style>
-</style>
+{#if $loading}
+    Loading...
+{:else if $error}
+    Error: {$error}
+{:else}
+    <NavBar title={$config?.title}/>
+    <main class="app-main">
+        <Router {routes}/>
+    </main>
+{/if}

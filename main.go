@@ -21,7 +21,7 @@ var (
 
 func main() {
 	e := echo.New()
-	e.Use(middleware.Logger())
+	//e.Use(middleware.Logger())
 	e.Use(middleware.CORS())
 	e.Use(internal.NoCache)
 
