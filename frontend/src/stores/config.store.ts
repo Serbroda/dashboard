@@ -8,3 +8,14 @@ import {BASE_URL} from "../config";
 export default function() {
     return fetchStore<Config>(`${BASE_URL}/api/v1/config`)
 }
+
+export function saveConfig(config: Config): Promise<Response> {
+    return fetch(`${BASE_URL}/api/v1/config`, {
+        method: "POST",
+        body: JSON.stringify(config),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    })
+}
