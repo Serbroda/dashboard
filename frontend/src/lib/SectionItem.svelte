@@ -1,6 +1,7 @@
 <script lang="ts">
     import {onDestroy} from 'svelte';
     import type {Item} from "../models/config.model";
+    import ping from "../services/ping.service";
 
     export let item: Item = {name: "", url: ""};
     let online: boolean = false;
@@ -10,9 +11,9 @@
         return new Promise((res, rej) => {
             console.debug('Checking availability for ', url);
 
-            fetch(url, {mode: 'no-cors'}).then((r) => {
+            ping(url).then((r) => {
                 console.debug('result for url ' + url, r);
-                return res(true);
+                return res(r.ok);
             }).catch(err => {
                 console.debug('result for url ' + url, err);
                 return res(false);

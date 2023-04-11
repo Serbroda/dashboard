@@ -7,7 +7,7 @@
       "items": [
         {
           "name": "Google",
-          "url": "https://google.de",
+          "url": "https://google3243242.de",
           "icon": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
           "checkAvailability": true,
           "checkAvailabilityIntervalSeconds": 20
