@@ -45,3 +45,56 @@ textarea {
 .app-item-availability-offline {
   @apply bg-red-500;
 }
+
+
+
+
+
+
+
+$pink: #ff0054;
+@mixin small {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin med {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+div.logo {
+  color: #232323;
+  -webkit-text-fill-color: rgba(#fff, 0.2);
+  text-shadow: -0.1em -0.1em 0.5em rgba(#fff, 1.3), 7.5px 7.5px 5px blue;
+  text-shadow: -5.5px -5.5px 55px rgba(#fff, 0.3), 5.5px 5.5px 15px $pink;
+  border-right: 2px solid black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #fff;
+  text-shadow: -5.5px -5.5px 5px rgba(#fff, 0.3), 5.5px 5px 1px $pink;
+  color: transparent;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #000;
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+  }
+}
+h1 {
+  font-size: 7em;
+  @include med {
+    font-size: 5em;
+  }
+  @include small {
+    font-size: 4em;
+  }
+  font-weight: bold;
+}
