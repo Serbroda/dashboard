@@ -4,7 +4,7 @@
     const [config, loading, error, get] = configStore;
     let json;
 
-    config.subscribe(r => json = JSON.stringify($config))
+    config.subscribe(r => json = JSON.stringify($config, undefined, 2))
 
     function save() {
         saveConfig(json).then(() => get())

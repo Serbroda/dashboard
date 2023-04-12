@@ -2,16 +2,15 @@ package internal
 
 import (
 	"encoding/json"
-	"log"
 	"os"
 )
 
 func ReadConfig[T any](path string) (T, error) {
 	var config T
 
-	content, err := os.ReadFile(path)
+	content, err := ReadFileBytes(path)
 	if err != nil {
-		log.Fatal(err)
+		return config, err
 	}
 
 	err = json.Unmarshal(content, &config)
