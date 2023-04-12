@@ -1,15 +1,14 @@
 <script lang="ts">
     import configStore, {saveConfig} from "../stores/config.store";
 
-    const [config, loading, error, get] = configStore();
+    const [config, loading, error, get] = configStore;
     let json;
 
     config.subscribe(r => json = JSON.stringify($config))
 
     function save() {
         console.log(json);
-        saveConfig(json)
-        get()
+        saveConfig(json).then(() => get())
     }
 </script>
 

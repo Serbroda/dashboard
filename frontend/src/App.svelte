@@ -8,7 +8,7 @@
     import NavBar from "./lib/NavBar.svelte";
     import Section from "./lib/Section.svelte";
 
-    const [config, loading, error] = configStore();
+    const [config, loading, error] = configStore;
 
     const routes = {
         '/': Home,

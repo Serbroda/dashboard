@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:ml-4 lg:flex lg:items-center">
+            <div class="flex ml-4 items-center">
                 <a href="/settings" use:link
                    class="flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                     <span class="sr-only">Settings</span>

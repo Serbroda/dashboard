@@ -2,7 +2,7 @@
     import Section from "../lib/Section.svelte";
     import configStore from "../stores/config.store";
 
-    const [config] = configStore();
+    const [config] = configStore;
 </script>
 
 <div class="app-sections-container-wrapper">
