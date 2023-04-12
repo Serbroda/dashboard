@@ -47,7 +47,7 @@
     {/if}
     <div class="flex-1 flex flex-col pl-2">
         <span>{item.name}</span>
-        <small>Hi</small>
+        <small>{item.description || ''}</small>
     </div>
     <div>
         {#if (item.checkAvailability === true)}

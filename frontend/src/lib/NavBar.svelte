@@ -1,15 +1,21 @@
 <script lang="ts">
     import {link} from 'svelte-spa-router'
     export let title: string = "";
+    export let description: string = "";
 </script>
 
 <nav class="bg-white shadow">
     <div class="mx-auto px-2">
         <div class="flex h-16 justify-between">
-            <div class="flex px-2 lg:px-0 logo">
-                <a href="/" use:link class="logo-text flex flex-shrink-0 items-center text-3xl font-semibold text-gray-800">
-                    {title || 'HEDYWYD?Y!'}
-                </a>
+            <div class="flex flex-col px-2 lg:px-0 justify-center">
+                <div class="logo">
+                    <a href="/" use:link class="logo-text flex flex-shrink-0 items-center text-3xl font-semibold text-gray-800">
+                        {title || 'HEDYWYD?Y!'}
+                    </a>
+                </div>
+                {#if description}
+                    <small>{description || ''}</small>
+                {/if}
             </div>
 
             <div class="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">

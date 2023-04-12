@@ -7,14 +7,11 @@
     config.subscribe(r => json = JSON.stringify($config))
 
     function save() {
-        console.log(json);
         saveConfig(json).then(() => get())
     }
 </script>
 
 <h1>Settings</h1>
-
-<span>{$config?.title}</span>
 
 <textarea class="w-full min-h-full" rows="10" bind:value={json}></textarea>
 

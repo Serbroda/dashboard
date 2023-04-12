@@ -34,7 +34,8 @@
 {:else if $error}
     Error: {$error}
 {:else}
-    <NavBar title={$config?.title}/>
+    <NavBar title={$config?.title}
+            description={$config?.description}/>
     <main class="app-main">
         <Router {routes}/>
     </main>
