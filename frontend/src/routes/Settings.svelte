@@ -15,6 +15,6 @@
 
 <textarea class="w-full min-h-full" rows="10" bind:value={json}></textarea>
 
-<button on:click={() => save()}>
+<button on:click={() => save()} class="btn">
 Save
 </button>

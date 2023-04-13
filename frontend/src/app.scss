@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* base */
+@import "tailwindcss/base";
+
+/* components */
+@import "tailwindcss/components";
+@import "styles/button";
+@import "styles/nav";
+
+/* utilities */
+@import "tailwindcss/utilities";
 
 $base-font-size: 12px;
 $heading-scale: 8;
@@ -11,10 +18,6 @@ html, body, #app {
 
 .app-main {
   @apply p-4;
-}
-
-button {
-  @apply rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
 }
 
 input {
@@ -52,21 +55,6 @@ textarea {
 
 
 
-$pink: #0cd397;
-$offset-x: 2px;
-$offset-y: 3px;
-$blur: 1px;
-$stroke-width: 1.5px;
-$stroke-color: #2a2a2a;
 
-div.logo {
-  -webkit-text-fill-color: rgba(#fff, 0.2);
-  text-shadow: -5.5px -5.5px 5px rgba(#fff, 0.3), $offset-x $offset-y $blur $pink;
-  color: transparent;
-  -webkit-text-stroke-width: $stroke-width;
-  -webkit-text-stroke-color: $stroke-color;
 
-  .logo-text {
-    font-family: "Oswald", sans-serif;
-  }
-}
+

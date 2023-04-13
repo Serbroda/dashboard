@@ -1,45 +1,45 @@
 {
-  "title": "HEDYWYD?y!",
   "description": "hædɪəwaɪdɪə",
   "sections": [
     {
-      "name": "Search Engines",
       "items": [
         {
-          "name": "Google",
-          "url": "https://google3243242.de",
-          "icon": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
           "checkAvailability": true,
-          "checkAvailabilityIntervalSeconds": 20
+          "checkAvailabilityIntervalSeconds": 20,
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
+          "name": "Google",
+          "url": "https://google3243242.de"
         },
         {
-          "name": "Bing",
-          "url": "https://bing.de",
           "checkAvailability": false,
-          "checkAvailabilityIntervalSeconds": 20
+          "checkAvailabilityIntervalSeconds": 20,
+          "name": "Bing",
+          "url": "https://bing.de"
         }
-      ]
+      ],
+      "name": "Search Engines"
     },
     {
-      "name": "News",
       "items": [
         {
-          "name": "t3n",
-          "url": "https://t3n.de",
           "checkAvailability": true,
-          "checkAvailabilityIntervalSeconds": 5
+          "checkAvailabilityIntervalSeconds": 5,
+          "name": "t3n",
+          "url": "https://t3n.de"
         },
         {
           "name": "Heise",
           "url": "https://heise.de"
         },
         {
-          "name": "Golem",
-          "url": "https://golem.de",
           "checkAvailability": true,
-          "checkAvailabilityIntervalSeconds": 60
+          "checkAvailabilityIntervalSeconds": 60,
+          "name": "Golem",
+          "url": "https://golem.de"
         }
-      ]
+      ],
+      "name": "News"
     }
-  ]
+  ],
+  "title": "HEDYWYD?y!"
 }
